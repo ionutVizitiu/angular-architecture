@@ -1,17 +1,17 @@
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {ModuleWithProviders} from '@angular/core/src/metadata/ng_module';
-import {CityPipe} from './pipes/city.pipe';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ModuleWithProviders } from '@angular/core';
+import { CityPipe } from './pipes/city.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    CityPipe,
+    CityPipe
   ],
   exports: [
-    CityPipe,
+    CityPipe
   ]
 })
 export class SharedModule {
@@ -19,14 +19,13 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: []
-    }
+    };
   }
 
   static forChild(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
       providers: []
-    }
+    };
   }
-
 }

@@ -1,14 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'flight-booking',
+  selector: 'fl-app-flight-booking',
   templateUrl: './flight-booking.component.html'
 })
-export class FlightBookingComponent implements OnInit {
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
+export class FlightBookingComponent {
 }

@@ -7,7 +7,7 @@
       "root": "projects/flight-admin/",
       "sourceRoot": "projects/flight-admin/src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "fl-admin",
       "schematics": {},
       "architect": {
         "build": {
@@ -139,7 +139,7 @@
       "root": "projects/flight-app/",
       "sourceRoot": "projects/flight-app/src",
       "projectType": "application",
-      "prefix": "",
+      "prefix": "fl-app",
       "schematics": {},
       "architect": {
         "build": {
@@ -221,28 +221,6 @@
               "projects/flight-app/tsconfig.app.json",
               "projects/flight-app/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "flight-app-e2e": {
-      "root": "projects/flight-app-e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/flight-app-e2e/protractor.conf.js",
-            "devServerTarget": "flight-app:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "projects/flight-app-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]

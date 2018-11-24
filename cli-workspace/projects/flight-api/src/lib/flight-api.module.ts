@@ -1,6 +1,6 @@
-import {CommonModule} from '@angular/common';
-import {ModuleWithProviders, NgModule} from '@angular/core';
-import {FlightService} from './services/flight.service';
+import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { FlightService } from './services/flight.service';
 
 @NgModule({
   imports: [
@@ -14,6 +14,6 @@ export class FlightApiModule {
       providers: [
         FlightService
       ]
-    }
+    };
   }
 }

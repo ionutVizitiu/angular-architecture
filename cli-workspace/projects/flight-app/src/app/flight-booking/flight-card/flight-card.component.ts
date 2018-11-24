@@ -1,23 +1,12 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  NgZone,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
-import {Flight} from '@flight-workspace/flight-api';
+import { Component, ElementRef, EventEmitter, Input, NgZone, Output } from '@angular/core';
+import { Flight } from '@flight-workspace/flight-api';
 
 @Component({
-  selector: 'flight-card',
-  templateUrl: './flight-card.component.html',
+  selector: 'fl-app-flight-card',
+  templateUrl: './flight-card.component.html'
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FlightCardComponent implements OnInit, OnChanges, OnDestroy {
+export class FlightCardComponent {
 
   @Input() item: Flight;
   @Input() selected: boolean;
@@ -26,23 +15,14 @@ export class FlightCardComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private element: ElementRef, private zone: NgZone) {
   }
 
-  ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-  }
-
-  ngOnDestroy(): void {
-  }
-
   select() {
     this.selected = true;
-    this.selectedChange.next(true);
+    this.selectedChange.emit(true);
   }
 
   deselect() {
     this.selected = false;
-    this.selectedChange.next(false);
+    this.selectedChange.emit(false);
   }
 
   blink() {
@@ -59,6 +39,4 @@ export class FlightCardComponent implements OnInit, OnChanges, OnDestroy {
 
     return null;
   }
-
-
 }

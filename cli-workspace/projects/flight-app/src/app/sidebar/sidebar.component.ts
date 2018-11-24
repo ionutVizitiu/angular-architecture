@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'sidebar-cmp',
-  templateUrl: 'sidebar.component.html',
+  selector: 'fl-app-sidebar',
+  templateUrl: 'sidebar.component.html'
 })
 
 export class SidebarComponent {
