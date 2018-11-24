@@ -5,10 +5,10 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [{
-  path: 'fl-app-flight-booking',
+  path: 'flight-booking',
   component: FlightBookingComponent,
   children: [{
-    path: 'fl-app-flight-search',
+    path: 'flight-search',
     component: FlightSearchComponent
   }, {
     path: 'passenger-search',
