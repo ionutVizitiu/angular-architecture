@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FlightService } from '@flight-workspace/flight-api';
+import {Flight, FlightService} from '@flight-workspace/flight-api';
 
 @Component({
   selector: 'fl-app-flight-search',
@@ -11,7 +11,7 @@ export class FlightSearchComponent implements OnInit {
   to = 'Graz'; // in Austria
   urgent = false;
 
-  get flights() {
+  get flights(): Flight[] {
     return this.flightService.flights;
   }
 
