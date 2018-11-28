@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SharedModule } from './shared/shared.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { ErrorHandlesService } from './shared/error-handler.service';
 
 @NgModule({
   imports: [
@@ -25,15 +25,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SharedModule.forRoot(),
     RouterModule.forRoot([...APP_ROUTES], { ...APP_EXTRA_OPTIONS })
   ],
-  declarations: [
-    AppComponent,
-    SidebarComponent,
-    NavbarComponent,
-    HomeComponent,
-    BasketComponent
-  ],
-  providers: [],
+  declarations: [AppComponent, SidebarComponent, NavbarComponent, HomeComponent, BasketComponent],
+  providers: [ErrorHandlesService],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
