@@ -16,16 +16,22 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './+state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([]),
+
     FlightBookingModule,
     FlightApiModule.forRoot(),
+
     SharedModule.forRoot(),
+
     RouterModule.forRoot([...APP_ROUTES], { ...APP_EXTRA_OPTIONS })
   ],
   declarations: [AppComponent, SidebarComponent, NavbarComponent, HomeComponent, BasketComponent],
