@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from './+state/index';
-import { CounterIncrementAction, CounterDecrementAction } from './+state/app/app.actions';
-import * as fromApp from './+state/app/app.selectors';
+import { CounterIncrementAction, CounterDecrementAction } from './+state/app.actions';
+import * as fromApp from './+state/app.selectors';
 
 @Component({
   selector: 'fl-app-root',

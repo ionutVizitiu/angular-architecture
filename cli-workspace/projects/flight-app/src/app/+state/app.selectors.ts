@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { State as StoreState } from '../index';
+import { State as StoreState } from './index';
 import { State as AppState } from './app.reducer';
 
 export function getAppState(store: StoreState): AppState {
