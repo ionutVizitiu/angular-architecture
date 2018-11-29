@@ -14,6 +14,10 @@ export function reducer(state = initialState, action: AppActions): State {
       const newCount = state.count + action.payload.incrementBy;
       return { ...state, count: newCount };
     }
+    case AppActionTypes.CounterDecrement: {
+      const newCount = state.count - action.payload.decrementBy;
+      return { ...state, count: newCount };
+    }
     default:
       return state;
   }

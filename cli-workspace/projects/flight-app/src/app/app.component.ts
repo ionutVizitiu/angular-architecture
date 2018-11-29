@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from './+state/index';
-import { CounterIncrementAction } from './+state/app/app.actions';
+import { CounterIncrementAction, CounterDecrementAction } from './+state/app/app.actions';
 import * as fromApp from './+state/app/app.selectors';
 
 @Component({
@@ -19,6 +19,11 @@ export class AppComponent {
 
   countUp() {
     const action = new CounterIncrementAction({ incrementBy: 1 });
+    this.store.dispatch(action);
+  }
+
+  countDown() {
+    const action = new CounterDecrementAction({ decrementBy: 1 });
     this.store.dispatch(action);
   }
 }

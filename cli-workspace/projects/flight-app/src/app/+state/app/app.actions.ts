@@ -1,7 +1,8 @@
 import { Action } from '@ngrx/store';
 
 export enum AppActionTypes {
-  CounterIncrement = '[App] Counter Increment'
+  CounterIncrement = '[App] Counter Increment',
+  CounterDecrement = '[App] Counter Decrement'
 }
 
 export class CounterIncrementAction implements Action {
@@ -9,4 +10,9 @@ export class CounterIncrementAction implements Action {
   constructor(public payload: { incrementBy: number }) {}
 }
 
-export type AppActions = CounterIncrementAction;
+export class CounterDecrementAction implements Action {
+  readonly type = AppActionTypes.CounterDecrement;
+  constructor(public payload: { decrementBy: number }) {}
+}
+
+export type AppActions = CounterIncrementAction & CounterDecrementAction;
