@@ -1,31 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import {Flight, FlightService} from '@flight-workspace/flight-api';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import * as fromFlightBooking from '../+state/flight-booking.selectors';
+import { Flight, FlightService } from '@flight-workspace/flight-api';
+import { FlightsLoadedSuccess, LoadFlights, FlightBookingActionTypes } from '../+state/flight-booking.actions';
 
 @Component({
   selector: 'fl-app-flight-search',
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css']
 })
-export class FlightSearchComponent implements OnInit {
+export class FlightSearchComponent {
   from = 'Hamburg'; // in Germany
   to = 'Graz'; // in Austria
   urgent = false;
 
-  get flights(): Flight[] {
-    return this.flightService.flights;
-  }
+  isFlightsPending$: Observable<boolean>;
+  flights$: Observable<Flight[]>;
 
   // "shopping basket" with selected flights
-  basket: {[key: number]: boolean} = {
+  basket: { [key: number]: boolean } = {
     3: true,
     5: true
   };
 
-  constructor(
-    private flightService: FlightService) {
-  }
-
-  ngOnInit() {
+  constructor(private flightService: FlightService, private store: Store<any>) {
+    this.flights$ = this.store.pipe(select(fromFlightBooking.getFlights));
+    this.isFlightsPending$ = this.store.pipe(select(fromFlightBooking.getIsFlightsPending));
   }
 
   search(): void {
@@ -33,7 +34,11 @@ export class FlightSearchComponent implements OnInit {
       return;
     }
 
-    this.flightService.load(this.from, this.to, this.urgent);
+    const action: LoadFlights = {
+      type: FlightBookingActionTypes.LoadFlights,
+      payload: { from: this.from, to: this.to }
+    };
+    this.store.dispatch(action);
   }
 
   delay(): void {

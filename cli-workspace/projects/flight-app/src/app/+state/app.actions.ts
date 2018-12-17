@@ -15,4 +15,4 @@ export class CounterDecrementAction implements Action {
   constructor(public payload: { decrementBy: number }) {}
 }
 
-export type AppActions = CounterIncrementAction & CounterDecrementAction;
+export type AppActions = CounterIncrementAction | CounterDecrementAction;

@@ -1,11 +1,25 @@
 import { Action } from '@ngrx/store';
+import { Flight } from '@flight-workspace/flight-api';
 
 export enum FlightBookingActionTypes {
-  LoadFlightBookings = '[FlightBooking] Load FlightBookings'
+  LoadFlights = '[FlightBooking] Load Flights',
+  FlightsLoadedSuccess = '[FlightBooking] Flights Loaded Success',
+  FlightsLoadedError = '[FlightBooking] Flights Loaded Error'
 }
 
-export class LoadFlightBookings implements Action {
-  readonly type = FlightBookingActionTypes.LoadFlightBookings;
+export class LoadFlights implements Action {
+  readonly type = FlightBookingActionTypes.LoadFlights;
+  constructor(public payload: { from: string; to: string }) {}
 }
 
-export type FlightBookingActions = LoadFlightBookings;
+export class FlightsLoadedSuccess implements Action {
+  readonly type = FlightBookingActionTypes.FlightsLoadedSuccess;
+  constructor(public payload: { flights: Flight[] }) {}
+}
+
+export class FlightsLoadedError implements Action {
+  readonly type = FlightBookingActionTypes.FlightsLoadedError;
+  constructor(public payload: { error: string }) {}
+}
+
+export type FlightBookingActions = LoadFlights | FlightsLoadedSuccess | FlightsLoadedError;

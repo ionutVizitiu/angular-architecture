@@ -22,17 +22,13 @@ import { EffectsModule } from '@ngrx/effects';
   imports: [
     BrowserModule,
     HttpClientModule,
-
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([]),
-
     FlightBookingModule,
     FlightApiModule.forRoot(),
-
     SharedModule.forRoot(),
-
-    RouterModule.forRoot([...APP_ROUTES], { ...APP_EXTRA_OPTIONS })
+    RouterModule.forRoot([...APP_ROUTES], { ...APP_EXTRA_OPTIONS }),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([])
   ],
   declarations: [AppComponent, SidebarComponent, NavbarComponent, HomeComponent, BasketComponent],
   providers: [ErrorHandlesService],
